@@ -70,7 +70,7 @@ public class ElasticsearchConfiguration {
             requestConfigBuilder.setConnectTimeout(connectTimeout);
             return requestConfigBuilder;
         });
-
+        log.info("初始化成功");
         return new RestHighLevelClient(restClientBuilder);
     }
 

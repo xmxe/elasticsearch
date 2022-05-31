@@ -71,7 +71,7 @@ public class IndexJunit {
         request.settings(settings);
 
         //映射结构字段
-        Map<String, Object> properties = new HashMap();
+        Map<String, Object> properties = new HashMap<>();
         properties.put("id", ImmutableBiMap.of("type", "text"));
         properties.put("name", ImmutableBiMap.of("type", "text"));
         properties.put("sex", ImmutableBiMap.of("type", "text"));
