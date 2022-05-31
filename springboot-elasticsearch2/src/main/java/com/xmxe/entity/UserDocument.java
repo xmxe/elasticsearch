@@ -1,4 +1,4 @@
-package com.xmxe.config.entity;
+package com.xmxe.entity;
 
 import java.util.Date;
 
