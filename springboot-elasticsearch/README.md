@@ -1,3 +1,3 @@
 - [手把手教你使用 Elasticsearch 实现海量级数据搜索（上）](https://mp.weixin.qq.com/s/WavG7tl-xZDn7hfw24vDuw)
 - [SpringBoot 整合 Elasticsearch 实现海量级数据搜索](https://mp.weixin.qq.com/s/Pheqs6kEZl85XZf2vsy12A)
-- [【纯干货】SpringBoot 整合 ES 进行各种高级查询搜索](https://mp.weixin.qq.com/s/kJ2opWzW8dn-WiVgsVvqmw)
+- [SpringBoot 整合 ES 进行各种高级查询搜索](https://mp.weixin.qq.com/s/kJ2opWzW8dn-WiVgsVvqmw)
