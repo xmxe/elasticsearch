@@ -15,13 +15,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
-public class ElasticsearchConfiguration {
+public class ElasticSearchConfig {
 
-    private static final Logger log = LoggerFactory.getLogger(ElasticsearchConfiguration.class);
-
+    private static final Logger log = LoggerFactory.getLogger(ElasticSearchConfig.class);
 
     private static final int ADDRESS_LENGTH = 2;
 
