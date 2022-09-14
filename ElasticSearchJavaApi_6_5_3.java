@@ -71,18 +71,18 @@ public class ElasticSearchJavaApi_6_5_3{
 
     String jsonStr = JSON.toJSONString(product);
 
-    IndexResponse response = client.prepareIndex("bigdata", "product")
+    IndexResponse indexResponse = client.prepareIndex("bigdata", "product")
             .setSource(jsonStr, XContentType.JSON)
             .get();
 
-    System.out.println("待新增的document的信息是：" + jsonStr + "，新增操作后，获得了来自远程es集群反馈的信息是：" + response);
+    System.out.println("待新增的document的信息是：" + jsonStr + "，新增操作后，获得了来自远程es集群反馈的信息是：" + indexResponse);
 
     /**
      * 测试删除索引信息
      */
      //需求：从索引库bigdata中type之product中，删除一条id为IxVruWkBtUUytMiZ4rxw的document。
-    DeleteResponse response = client.prepareDelete("bigdata", "product", "IxVruWkBtUUytMiZ4rxw").get();
-    String finalResult = "deleted".equals(response.getResult().toString().toLowerCase()) ? "删除成功！" : "删除失败！555...";
+    DeleteResponse delResponse = client.prepareDelete("bigdata", "product", "IxVruWkBtUUytMiZ4rxw").get();
+    String finalResult = "deleted".equals(delResponse.getResult().toString().toLowerCase()) ? "删除成功！" : "删除失败！555...";
     System.out.println("删除成功否？" + finalResult);
 
     /**
@@ -90,9 +90,9 @@ public class ElasticSearchJavaApi_6_5_3{
      */
     //需求：针对索引库bigdata中type之product，将id为OiUhuGkBJFmjDtb2b5p9的document的name更新为“独孤求败”,version更新为1.6.5。 （局部更新）
 
-    UpdateResponse response = client.prepareUpdate("bigdata", "product", "OiUhuGkBJFmjDtb2b5p9").setDoc("name", "独孤求败", "version", "1.6.5").get();
+    UpdateResponse updateResponse = client.prepareUpdate("bigdata", "product", "OiUhuGkBJFmjDtb2b5p9").setDoc("name", "独孤求败", "version", "1.6.5").get();
 
-    System.out.println("获得了来自远程es集群的反馈信息是："+response);
+    System.out.println("获得了来自远程es集群的反馈信息是："+updateResponse);
     
 
     /**
@@ -103,16 +103,16 @@ public class ElasticSearchJavaApi_6_5_3{
     //②删除一条document，该document的id是：OSUhuGkBJFmjDtb2b5pO
     //③更新一条document，该document的id是：OiUhuGkBJFmjDtb2b5p9，将name更新为：spark, author更新为独孤求败
 
-    BulkResponse response = client.prepareBulk()
+    BulkResponse bulkResponse = client.prepareBulk()
             .add(new IndexRequest("bigdata", "product").source(JSON.toJSONString(new Product("flume", "阿诺德.施瓦辛格", "2.6.8")), XContentType.JSON))
             .add(new DeleteRequest("bigdata", "product", "OSUhuGkBJFmjDtb2b5pO"))
             .add(new UpdateRequest("bigdata", "product", "OiUhuGkBJFmjDtb2b5p9").doc("name", "spark", "author", "独孤求败"))
             .get();
 
     //分析结果
-    for(BulkItemResponse result:response.getItems()){
-        String finalResult = result.isFailed()?"失败":"成功";
-        System.out.println("操作成功否？"+finalResult);
+    for(BulkItemResponse result:bulkResponse.getItems()){
+        String bulkResult = result.isFailed()?"失败":"成功";
+        System.out.println("操作成功否？"+bulkResult);
     }
 
 
@@ -121,7 +121,7 @@ public class ElasticSearchJavaApi_6_5_3{
      */
     //案例1：检索bigdata索引库中，product type中的字段name为hive的索引信息。学习知识点： 检索类型，分页检索
     String[] indices = {"bank", "bigdata"};
-    SearchResponse response = client.prepareSearch(indices)
+    SearchResponse searchResponse = client.prepareSearch(indices)
             //指定所关注的type
             .setTypes("product")
             //设定searchType
@@ -135,7 +135,7 @@ public class ElasticSearchJavaApi_6_5_3{
 
 
     //从结果中显示所有满足条件的记录
-    SearchHits hits = response.getHits();
+    SearchHits hits = searchResponse.getHits();
     for (SearchHit hit : hits) {
         System.out.println("检索到的document信息是：" + hit.getSourceAsString());
     }
@@ -154,7 +154,7 @@ public class ElasticSearchJavaApi_6_5_3{
             .postTags("</font>");
 
     //②检索
-    SearchResponse response = client.prepareSearch(indices)
+    SearchResponse searchResponse2 = client.prepareSearch(indices)
             //指定所关注的type
             .setTypes("product")
             //设置查询的条件
@@ -165,8 +165,8 @@ public class ElasticSearchJavaApi_6_5_3{
 
 
     //③分析检索后的结果
-    SearchHits hits = response.getHits();
-    for (SearchHit hit : hits) {
+    SearchHits hits2 = searchResponse2.getHits();
+    for (SearchHit hit : hits2) {
         //logger.info("检索到的document信息是：" + hit.getSourceAsString());
 
         //核心步骤：
@@ -189,28 +189,28 @@ public class ElasticSearchJavaApi_6_5_3{
     /**
      * 查询索引库test-ok中的type之news,查询字段content中包含“中”的索引信息 （使用默认的分词法）
      */  
-    SearchResponse response = client.prepareSearch("test-ok")
+    SearchResponse searchResponse3 = client.prepareSearch("test-ok")
             .setTypes("news")
             //设置检索的条件
             .setQuery(QueryBuilders.termQuery("content", "中国"))
             .get();
 
     //输出查询到的索引信息
-    for (SearchHit hit : response.getHits()) {
+    for (SearchHit hit : searchResponse3.getHits()) {
         System.out.println(hit.getSourceAsString());
     }
 
     /**
      * 查询索引库chinese中的type之hot,查询字段content中包含"中国"的索引信息 （使用ik中文分词）
      */
-    SearchResponse response = client.prepareSearch("chinese")
+    SearchResponse searchResponse4 = client.prepareSearch("chinese")
             .setTypes("hot")
             //设置检索的条件
             .setQuery(QueryBuilders.termQuery("content", "中国"))
             .get();
 
     //输出查询到的索引信息
-    for (SearchHit hit : response.getHits()) {
+    for (SearchHit hit : searchResponse4.getHits()) {
         System.out.println(hit.getSourceAsString());
     }
 
@@ -219,7 +219,7 @@ public class ElasticSearchJavaApi_6_5_3{
 }
 
 class Product {
-    private String _id;
+    
     private String name;
     private String author;
     private String version;

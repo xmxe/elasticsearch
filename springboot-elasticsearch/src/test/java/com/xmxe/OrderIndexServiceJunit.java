@@ -59,7 +59,7 @@ public class OrderIndexServiceJunit {
      * @return
      */
     private Map<String, Object> buildMapping() {
-        Map<String, Object> properties = new HashMap();
+        Map<String, Object> properties = new HashMap<>();
         //订单id  唯一键ID
         properties.put("orderId", ImmutableBiMap.of("type", "keyword"));
         //订单号
@@ -68,7 +68,7 @@ public class OrderIndexServiceJunit {
         properties.put("orderUserName", ImmutableBiMap.of("type", "text"));
         
         //订单项
-        Map<String, Object> orderItems = new HashMap();
+        Map<String, Object> orderItems = new HashMap<>();
         //订单项ID
         orderItems.put("orderItemId", ImmutableBiMap.of("type", "keyword"));
         //产品名称
@@ -80,7 +80,7 @@ public class OrderIndexServiceJunit {
         properties.put("orderItems", ImmutableBiMap.of("type", "nested", "properties", orderItems));
 
         //文档结构映射
-        Map<String, Object> mapping = new HashMap();
+        Map<String, Object> mapping = new HashMap<>();
         mapping.put("properties", properties);
         return mapping;
     }
@@ -142,7 +142,7 @@ public class OrderIndexServiceJunit {
         long count = response.getHits().getTotalHits();
         // 返回的具体行数
         SearchHit[] searchHits = response.getHits().getHits();
-        log.info("response：{}", response.toString());
+        log.info("response:{},count:{},searchHits:{}", response.toString(),count,searchHits);
     }
 
 
@@ -200,7 +200,7 @@ public class OrderIndexServiceJunit {
         SearchHit[] searchHits = response.getHits().getHits();
         // 返回查询的的订单项分页数据
         Map<String, SearchHits> m = searchHits[0].getInnerHits();
-        log.info("response：{}", response.toString());
+        log.info("response:{},count:{},m:{}", response.toString(),count,m);
     }
 
 }
