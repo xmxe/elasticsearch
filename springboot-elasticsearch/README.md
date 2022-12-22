@@ -6,3 +6,4 @@
 - [ELK处理Spring Boot日志，妙](https://mp.weixin.qq.com/s/2XuSyw2M8iC0u7KJ6rw8bQ)
 - [Spring Boot搭建ELK，这才是正确看日志的方式！](https://mp.weixin.qq.com/s/SZuT8Ca7Tu97Tsoc-M-LFg)
 - [SpringBoot + Kafka + ELK完成海量日志收集（超详细)](https://mp.weixin.qq.com/s/U0M3Mpacr1qN_q8EQeLG5A)
+- [Spring Boot + ElasticSearch实现模糊查询，批量CRUD，排序，分页，高亮](https://mp.weixin.qq.com/s/JVzxamfrISb78xzZceLIBA)

@@ -4,3 +4,5 @@
 - [手把手教你使用Elasticsearch实现海量级数据搜索（上）](https://mp.weixin.qq.com/s/WavG7tl-xZDn7hfw24vDuw)
 - [手把手教你在CentOS上安装ELK，对服务器日志进行收集](https://mp.weixin.qq.com/s/LX2cKF6wH1IvlxmCSnWgCw)
 - [2万字详解，彻底讲透全文搜索引擎Elasticsearch](https://mp.weixin.qq.com/s/ZBsv3o5XfQq7gZkqa2yA6Q)
+- [ElasticSearch深度分页详解](https://mp.weixin.qq.com/s/Quoym4438irm4Uexb40asw)
+- [来聊一聊ElasticSearch最新版的Java客户端](https://mp.weixin.qq.com/s/nOVXS4XjNwig_2wNhaCYVw)
