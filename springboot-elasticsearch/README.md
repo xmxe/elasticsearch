@@ -2,6 +2,7 @@
 - [SpringBoot整合ES进行各种高级查询搜索](https://mp.weixin.qq.com/s/kJ2opWzW8dn-WiVgsVvqmw)
 - [如何利用SpringBoot在ES中实现类似连表的查询？](https://mp.weixin.qq.com/s/ERwwG9gBY1apk1Q6_9Sr0w)
 - [SpringBoot整合ElasticSearch这么简单？](https://mp.weixin.qq.com/s/UIR495P34agLht7bC1k14g)
+- [SpringBoot整合ElasticSearch做搜索引擎](https://mp.weixin.qq.com/s/sc-G3Z9-Nb9rbCUTzl8mWA)
 - [SpringBoot + Elasticsearch7.6实现查询及高亮分词查询，超级详细！](https://mp.weixin.qq.com/s/F48PmBQqSe2XeXQuadlZkA)
 - [ELK处理Spring Boot日志，妙](https://mp.weixin.qq.com/s/2XuSyw2M8iC0u7KJ6rw8bQ)
 - [Spring Boot搭建ELK，这才是正确看日志的方式！](https://mp.weixin.qq.com/s/SZuT8Ca7Tu97Tsoc-M-LFg)
